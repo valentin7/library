@@ -1,0 +1,90 @@
+
+@font-face {
+    font-family: 'Averta';
+    src: url('./fonts/AvertaStd-Regular.otf');
+}
+/* to display text in front of the aframe canvas*/
+a-scene{
+  z-index: -1;
+}
+
+/**/
+body{
+  background-color: #000;
+  /*margin: 0px;
+  overflow: hidden;*/
+	color: #fff;
+	font-family: 'Averta',
+}
+
+a:link, a:hover, a:visited, a:active {
+    color: white;
+    text-decoration: none;
+}
+
+.container{
+    position:absolute;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 15%;
+}
+
+#wall-title {
+  font-family: 'Averta';
+  color: rgb(1, 55, 120);
+}
+.info {
+	font-family: 'Averta';
+	position:absolute;
+  background-color: rgba(200, 200, 200, 0.87);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  border-radius: 10px;
+  position: absolute;
+  /*top: 50%;*/
+  left: 50%;
+  transform: translate(-50%, -0%);
+}
+
+.info .company{
+    font-size: 2em;
+}
+
+.info .title{
+    font-size: 7em;
+    font-family: 'Averta', cursive;
+}
+
+.info .button{
+    font-weight: bold;
+    background-color: rgb(18, 43, 79);
+    padding: 15px;
+    margin: 24px 0 0 0;
+    border-radius: 5px;
+}
+
+.info .instructions{
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 24px 0 0 0;
+}
+
+@media (max-width: 600px) {
+    .info {
+      width: 60%
+    }
+
+    .info .company{
+        font-size: 1em;
+    }
+
+    .info .title{
+      font-size: 3em;
+    }
+
+}

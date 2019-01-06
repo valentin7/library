@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Valentin's VR Library</title>
+
+    <meta property="og:title" content="Valentin's VR Library" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cecropia.github.io/thehallaframe/" />
+    <meta property="og:image" content="https://cecropia.github.io/thehallaframe/screenshots/thehall1.jpg" />
+    <meta property="og:description" content="Valentin's VR Library" />
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title" content="Valentin's VR Library">
+    <meta name="twitter:description" content="Valentin's VR Library ">
+    <meta name="twitter:image" content="https://cecropia.github.io/thehallaframe/screenshots/thehall1.jpg">
+
+
+
+
+    <link rel="icon" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <meta name="description" content="Valentin's VR Library">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="js/aframe.0.7.0.min.js"></script>
+    <script src="js/aframe-extras.min.js"></script>
+
+    <script src="js/lzma.js"></script>
+    <script src="js/ctm.js"></script>
+    <script src="js/CTMLoader.js"></script>
+
+    <script src="js/aframe-teleport-controls.min.js"></script>
+    <script src="js/spheres_anim.js"></script>
+    <script src="js/anim_1.js"></script>
+    <script src="js/anim_2.js"></script>
+    <script src="js/mocap.js"></script>
+    <script src="js/envMapMaterial.js"></script>
+    <script src="js/ctm_component.js"></script>
+    <script src="js/mobile_component.js"></script>
+
+  </head>
+
+  <body>
+
+    <div id="container" class="container">
+      <div class="info">
+        <div class="title">Valentin's Library</div>
+        <a class="button" id="start_experience" href="#">start experience</a>
+        <div class="instructions">
+          <div><strong>VR</strong>: Hand controllers and teleport with trigger.</div>
+          <div><strong>Desktop</strong>: Keyboard (WASD/arrows) and mouse dragging.</div>
+          <div><strong>Mobile</strong>: Gaze cursor and teleportation.</div>
+        </div>
+      </div>
+    </div>
+
+    <!--<a-scene stats>-->
+
+    <a-scene>
+      <a-entity mobile></a-entity>
+      <a-entity light="type: directional; color: #FFF; intensity: 0.5" position="2 20 0"></a-entity>
+      <a-entity light="type: ambient; color: #FFF"></a-entity>
+      <!-- Custom components with animations -->
+      <a-entity spheres material="shader: envMapMaterial; src:textures/cube/hall/; "></a-entity>
+      <a-entity anim_1></a-entity>
+      <a-entity anim_2></a-entity>
+
+      <!-- - Custom components with animations -->
+
+      <a-assets>
+        <a-mixin id="checkpoint"></a-mixin>
+        <a-mixin id="checkpoint-hovered" color="#6CEEB5"></a-mixin>
+
+        <img id="sky_sphere-texture" src="textures/sky_sphere.jpg">
+
+        <!-- TODO: add cool sound/music here.
+        <a-sound src="audio/84529__cmusounddesign__02-museum.ogg"
+                 autoplay="true"
+                 loop="true"
+                 position="1 1 0"></a-sound>
+
+        <a-sound src="audio/219462__cediez__musee-victoria-londres-grand-escalier.ogg"
+                 autoplay="true"
+                 loop="true"
+                 position="1 1 10"></a-sound>
+               -->
+
+
+        <!-- floor -->
+        <a-asset-item id="floor-obj" src="models/floor.obj"></a-asset-item>
+        <img id="floor-texture" src="textures/floor.jpg">
+        <img id="floor_normal-texture" src="textures/floor_normal.jpg">
+        <!-- - floor -->
+
+        <!-- hall -->
+        <a-asset-item id="hall-obj" src="models/hall.obj"></a-asset-item>
+        <img id="hall-texture" src="textures/hall.jpg"> -->
+        <!--<img id="hall_normal-texture" src="textures/hall_normal.jpg"> -->
+        <!-- - hall -->
+
+        <!-- library hall -->
+        <!-- <a-asset-item id="hall-obj" src="models/library_hall.obj"></a-asset-item>
+        <img id="hall-texture" src="textures/hall.jpg"> -->
+        <!-- library hall -->
+
+        <!-- hall low floor -->
+        <!-- this piece is only meant for teleportation -->
+        <a-asset-item id="hall_low_floor-obj" src="models/hall_low_floor.obj"></a-asset-item>
+
+        <!-- - hall low floor-->
+
+        <!-- acropolis -->
+        <a-asset-item id="acropolis-obj" src="models/acropolis.obj"></a-asset-item>
+        <img id="acropolis-texture" src="textures/acropolis.jpg">
+        <!-- - acropolis -->
+
+        <!-- test -->
+        <a-asset-item id="test-obj" src="models/test.obj"></a-asset-item>
+        <img id="test-texture" src="textures/test.jpg">
+        <!-- - test -->
+
+      </a-assets>
+
+      <a-sky color="#EEEEFF" material="src: #sky_sphere-texture"></a-sky>
+
+      <a-entity obj-model="obj: #floor-obj;" material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.6" id="floor"></a-entity>
+      <a-entity obj-model="obj: #hall-obj;" material="src: #hall-texture" id="hall"></a-entity>
+      <a-entity obj-model="obj: #hall_low_floor-obj;" material="opacity: 0.0" id="hall_low_floor"></a-entity>
+      <a-entity obj-model="obj: #acropolis-obj;" material="src: #acropolis-texture"></a-entity>
+      <a-entity obj-model="obj: #lamps-obj;" material="src: #lamps-texture; side: double;"></a-entity>
+
+      <!-- <a-entity obj-model="obj: #test-obj;" material="src: #test-texture"></a-entity> -->
+      <!--<a-entity obj-model="obj: #david_bike_hall_3-obj;" material="src: #david_bike_hall_3-texture"></a-entity>-->
+      <a-image src="book_images/virgin_way.jpg" position="-2.781 2.129 4" rotation="0 90 0">&gt;</a-image>
+      <a-image src="book_images/virgin_way.jpg" position="-2.781 2.129 6.7" rotation="0 90 0">&gt;</a-image>
+      <a-image src="book_images/virgin_way.jpg" position="-2.781 2.129 9.4" rotation="0 90 0">&gt;</a-image>
+      <a-image src="book_images/virgin_way.jpg" position="-2.781 2.129 12.1" rotation="0 90 0">&gt;</a-image>
+
+      <a-image src="book_images/virgin_way.jpg" position="2.781 2.129 4" rotation="0 270 0">&gt;</a-image>
+      <a-image src="book_images/virgin_way.jpg" position="2.781 2.129 6.7" rotation="0 270 0">&gt;</a-image>
+      <a-image src="book_images/virgin_way.jpg" position="2.781 2.129 9.4" rotation="0 270 0">&gt;</a-image>
+      <a-image src="book_images/virgin_way.jpg" position="2.781 2.129 12.1" rotation="0 270 0">&gt;</a-image>
+
+      <a-entity teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" hand-controls="left"></a-entity>
+      <a-entity teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" hand-controls="right"></a-entity>
+
+    </a-scene>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/async/1.4.2/async.js"></script>
+    <script src="main.js"></script>
+
+    <script>
+      // TODO: add google analytics
+      // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      // })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      //
+      // ga('create', 'UA-92113119', 'auto');
+      // ga('send', 'pageview');
+
+    </script>
+
+  </body>
+
+</html>

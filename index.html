@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Valentin's VR Library</title>
+
+    <meta property="og:title" content="Valentin's VR Library" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cecropia.github.io/thehallaframe/" />
+    <meta property="og:image" content="https://cecropia.github.io/thehallaframe/screenshots/thehall1.jpg" />
+    <meta property="og:description" content="Valentin's VR Library" />
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title" content="Valentin's VR Library">
+    <meta name="twitter:description" content="Valentin's VR Library ">
+    <meta name="twitter:image" content="https://cecropia.github.io/thehallaframe/screenshots/thehall1.jpg">
+
+
+
+
+    <link rel="icon" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <meta name="description" content="Valentin's VR Library">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="js/aframe.0.7.0.min.js"></script>
+    <script src="js/aframe-extras.min.js"></script>
+
+    <script src="js/lzma.js"></script>
+    <script src="js/ctm.js"></script>
+    <script src="js/CTMLoader.js"></script>
+
+    <script src="js/aframe-teleport-controls.min.js"></script>
+    <script src="js/spheres_anim.js"></script>
+    <script src="js/anim_1.js"></script>
+    <script src="js/anim_2.js"></script>
+    <script src="js/mocap.js"></script>
+    <script src="js/envMapMaterial.js"></script>
+    <script src="js/ctm_component.js"></script>
+    <script src="js/mobile_component.js"></script>
+
+  </head>
+
+  <body>
+
+    <div id="container" class="container">
+      <div class="info">
+        <div class="title">Valentin's Library</div>
+        <a class="button" id="start_experience" href="#">enter experience</a>
+        <div class="instructions">
+          <div><strong>Desktop</strong>: Keyboard (WASD/arrows) and mouse dragging.</div>
+          <div><strong>VR</strong>: Hand controllers and teleport with trigger.</div>
+          <div><strong>Mobile</strong>: Gaze cursor and teleportation.</div>
+        </div>
+      </div>
+    </div>
+    <!--<a-scene stats>-->
+
+    <a-scene>
+      <a-entity mobile></a-entity>
+
+      <!-- Custom components with animations -->
+      <!-- <a-entity spheres material="shader: envMapMaterial; src:textures/cube/hall/; "></a-entity> -->
+      <!-- <a-entity anim_1></a-entity> -->
+
+      <!-- - Custom components with animations -->
+
+      <a-assets>
+        <a-mixin id="checkpoint"></a-mixin>
+        <a-mixin id="checkpoint-hovered" color="#6CEEB5"></a-mixin>
+
+        <img id="sky_sphere-texture" src="textures/top-sky.jpg">
+
+        <!-- TODO: add cool sound/music here.
+        <a-sound src="audio/84529__cmusounddesign__02-museum.ogg"
+                 autoplay="true"
+                 loop="true"
+                 position="1 1 0"></a-sound>
+
+        <a-sound src="audio/219462__cediez__musee-victoria-londres-grand-escalier.ogg"
+                 autoplay="true"
+                 loop="true"
+                 position="1 1 10"></a-sound>
+               -->
+
+
+        <!-- floor -->
+        <a-asset-item id="floor-obj" src="models/floor.obj"></a-asset-item>
+        <img id="floor-texture" src="textures/floor.jpg">
+        <img id="floor_normal-texture" src="textures/floor_normal.jpg">
+        <!-- - floor -->
+
+        <!-- hall -->
+        <a-asset-item id="hall-obj" src="models/hall.obj"></a-asset-item>
+        <img id="hall-texture" src="textures/hall.jpg">
+
+        <a-asset-item id="valentin-library-obj" src="models/valentin_library.obj"></a-asset-item>
+        <a-asset-item id="valentin-library-mtl" src="models/valentin_library.mtl"></a-asset-item>
+        <img id="valentin-library-texture" src="textures/wood.jpg">
+
+
+        <img id="valentin-library-texture" src="models/valentin_library.mtl">
+        <!--<img id="hall_normal-texture" src="textures/hall_normal.jpg"> -->
+        <!-- - hall -->
+
+        <!-- library hall -->
+        <!-- <a-asset-item id="hall-obj" src="models/library_hall.obj"></a-asset-item>
+        <img id="hall-texture" src="textures/hall.jpg"> -->
+        <!-- library hall -->
+
+        <!-- hall low floor -->
+        <!-- this piece is only meant for teleportation -->
+        <a-asset-item id="hall_low_floor-obj" src="models/hall_low_floor.obj"></a-asset-item>
+
+        <!-- - hall low floor-->
+
+
+
+
+      </a-assets>
+
+      <a-sky color="#EEEEFF" material="src: #sky_sphere-texture"></a-sky>
+
+      <a-entity obj-model="obj: #floor-obj;" material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.6" id="floor"></a-entity>
+      <!-- <a-entity obj-model="obj: #hall-obj;" material="src: #hall-texture" id="hall"></a-entity> -->
+
+      <a-entity obj-model="obj: #valentin-library-obj;" material="src: #valentin-library-texture" id="hall" rotation="180 0 0" scale="1.15 0.45 1" position="4 0 0"></a-entity>
+
+
+      <!--- OTHER  SIDE --->
+      <!-- <a-image src="book_images/virgin_way.jpg" position="15.847 6.628 7.564" scale="1.5 1.5 1.5" rotation="0 180 0">&gt;</a-image>
+      <a-image src="book_images/virgin_way.jpg" position="13.847 6.628 7.564" scale="1.5 1.5 1.5" rotation="0 180 0">&gt;</a-image>
+
+      <a-image src="book_images/virgin_way.jpg" position="15.847 4.628 7.564" scale="1.5 1.5 1.5" rotation="0 180 0">&gt;</a-image>
+      <a-image src="book_images/virgin_way.jpg" position="13.847 4.628 7.564" scale="1.5 1.5 1.5" rotation="0 180 0">&gt;</a-image>
+
+      <a-image src="book_images/virgin_way.jpg" position="15.847 2.628 7.564" scale="1.5 1.5 1.5" rotation="0 180 0">&gt;</a-image>
+      <a-image src="book_images/virgin_way.jpg" position="13.847 2.628 7.564" scale="1.5 1.5 1.5" rotation="0 180 0">&gt;</a-image> -->
+
+      <!--- STARTING SIDE --->
+      <!-- <a-entity text="font: mozillavr; value: Via stock font name."></a-entity>
+      <a-entity text="font: https://cdn.aframe.io/fonts/mozillavr.fnt; value: Via URL."></a-entity> -->
+
+      <a-text value="My Favorite Books from 2018" id="wall-title" font="aileronsemibold" position="0 7 -7.372" height="39" scale="2 2 2"></a-text>
+
+
+      <a-image src="book_images/15_conscious.jpg" position="-14 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/score_itself.jpg" position="-12 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/creativity.jpg" position="-10 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/skin_game.jpg" position="-8 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/nonviolent_communication.jpg" position="-6 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/courage_disliked.jpg" position="-4 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/selfish_gene.jpg" position="-2 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/flow.jpg" position="0 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/fearless.jpg" position="2 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/12week.jpg" position="4 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/chop_wood.jpg" position="6 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/internet_of_money.jpg" position="6 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/da_vinci.jpg" position="8 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/untethered_soul.jpg" position="10 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/life_3.jpg" position="12 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/greatness_unplanned.jpg" position="14 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/island.jpg" position="16 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/metaphors.jpg" position="18 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/extend_mind.jpg" position="20 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/be_here_now.jpg" position="22 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/order_of_time.jpg" position="24 5.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+
+      <a-image src="book_images/goggins.jpg" position="-14 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/platform_revolution.jpg" position="-12 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/fail.jpg" position="-10 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/self_esteem.jpg" position="-8 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/21_lessons.jpg" position="-6 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/why_sleep.jpg" position="-4 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/genius_foods.jpg" position="-2 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/atomic_habits.jpg" position="0 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/talent.jpg" position="2 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/systems.jpg" position="4 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/against_education.jpg" position="6 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/vagabonding.jpg" position="8 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/change_mind.jpg" position="10 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/ready_player_one.jpg" position="12 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/loving.jpg" position="14 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/one_thing.jpg" position="16 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/bird_by_bird.jpg" position="18 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/ideas.jpg" position="20 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/blitzcaling.jpg" position="22 3.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+
+      <a-image src="book_images/mind_illuminated.jpg" position="-14 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/dream_machine.jpg" position="-12 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/creative_selection.jpg" position="-10 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/finding_virginity.jpg" position="-8 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/open.jpg" position="-8 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/what_school.jpg" position="-6 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/focus.jpg" position="-4 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/art_of_living.jpg" position="-2 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/quirky.jpg" position="0 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/hamilton.jpg" position="2 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/franklin.jpg" position="4 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/daily_rituals.jpg" position="6 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/midnights_mystic.jpg" position="8 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/getting_there.jpg" position="10 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/own_day.jpg" position="12 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/roosevelt.jpg" position="14 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/siddhartha.jpg" position="16 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/love_yourself.jpg" position="18 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/story_brand.jpg" position="20 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+      <a-image src="book_images/exactly_say.jpg" position="22 1.5 -7.372" scale="1.5 1.5 1.5">&gt;</a-image>
+
+
+
+
+
+
+      <a-entity teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" hand-controls="left"></a-entity>
+      <a-entity teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" hand-controls="right"></a-entity>
+
+    </a-scene>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/async/1.4.2/async.js"></script>
+    <script src="main.js"></script>
+
+    <script>
+      // TODO: add google analytics
+      // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      // })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      //
+      // ga('create', 'UA-92113119', 'auto');
+      // ga('send', 'pageview');
+
+    </script>
+
+  </body>
+
+</html>
